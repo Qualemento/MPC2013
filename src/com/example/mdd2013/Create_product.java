@@ -1,27 +1,40 @@
 package com.example.mdd2013;
 
-import android.os.Bundle;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.support.v4.app.NavUtils;
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.content.ContentValues;
-import android.content.Intent;
-import android.database.Cursor;
-import android.os.Build;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class Create_product extends Activity {
 	@SuppressLint("NewApi")
-	@Override
+	//public SQLiteDatabase pricedb;
+	//Button button1=null;
+
+	 SQLiteDatabase pricedb;
+		Button button1=null;
+		Context myContext=null;
+		String data=null;
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create_product);
 		// Show the Up button in the action bar.
 		setupActionBar();
-
+		
+		pricedb = this.openOrCreateDatabase("myprice_database.db", MODE_PRIVATE, null);
+		myContext=this.getApplicationContext();
 		
 	}
 
@@ -57,6 +70,42 @@ public class Create_product extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	public void saveProduct(View view)
+	{
+		EditText categorytext = (EditText) findViewById(R.id.category);
+		String cattext= categorytext.getText().toString();
+		
+		EditText producttext = (EditText) findViewById(R.id.product);
+		String protext= producttext.getText().toString();
+		
+		EditText tescotext = (EditText) findViewById(R.id.tesco_price);
+		String testext= tescotext.getText().toString();
+		
+		EditText juscotext = (EditText) findViewById(R.id.jusco_price);
+		String justext= juscotext.getText().toString();
+		
+		EditText gianttext = (EditText) findViewById(R.id.giant_price);
+		String giatext= gianttext.getText().toString();
+		
+		
+		
+		
+		/*
+		 * pricedb.execSQL("INSERT INTO "+ "myprice_database"+ " (Category)" + cattext);
+		pricedb.execSQL("INSERT INTO "+ "myprice_database"+ " (Product)" +  protext);
+		pricedb.execSQL("INSERT INTO "+ "myprice_database"+ " (Tesco)" +  testext);
+		pricedb.execSQL("INSERT INTO "+ "myprice_database"+ " (Jusco)" +  justext);
+		pricedb.execSQL("INSERT INTO "+ "myprice_database"+ " (Giant)" +  giatext);
+		*/
+		try{
+			pricedb = this.openOrCreateDatabase("myprice_database.db", MODE_PRIVATE, null);
+			myContext=this.getApplicationContext();
+		pricedb.execSQL("INSERT INTO myprice_database ( Category, Product, Tesco, Jusco, Giant) VALUES ('" + cattext + "','" + protext + "','" + testext + "','" + justext + "', '" + giatext + "')");
+		Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
+		} catch(Exception e) {
+			Log.d("DEBUGGER", e.toString());
+		}
 	}
 	
 }

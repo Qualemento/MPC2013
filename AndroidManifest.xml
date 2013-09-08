@@ -30,6 +30,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.MDD2013.MainActivity" />
         </activity>
+        <activity
+            android:name="com.example.mdd2013.Search_Result"
+            android:label="@string/title_activity_search__result"
+            android:parentActivityName="com.example.mdd2013.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mdd2013.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.mdd2013.SearchList"
+            android:label="@string/title_activity_search_list"
+            android:parentActivityName="com.example.mdd2013MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mdd2013MainActivity" />
+        </activity>
     </application>
 
 </manifest>

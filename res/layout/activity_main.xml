@@ -21,27 +21,23 @@
    
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/editText1"
         android:layout_alignBottom="@+id/editText1"
         android:layout_alignParentRight="true"
-        android:text="@string/button_search"/>
+        android:text="@string/button_search"
+        android:onClick="searchProduct"/>
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/button1"
         android:layout_below="@+id/editText1"
-        android:layout_marginTop="91dp"
-        android:text="@string/button_product" 
-        android:onClick="CreateProduct" />
-    
-      <TextView android:id="@+id/out_text"
-       android:layout_width="fill_parent"
-       android:layout_height="wrap_content"
-       android:text="" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="94dp"
+        android:onClick="CreateProduct"
+        android:text="@string/button_product" />
 
 </RelativeLayout>
